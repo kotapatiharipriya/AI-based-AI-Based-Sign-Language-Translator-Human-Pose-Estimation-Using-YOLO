@@ -1,0 +1,42 @@
+# configs/optimize_pose.yaml
+
+# ---------- Paths ----------
+# Path to the FP32 model trained in Stage 1
+base_model: runs/pose/pose-estimation-yolo/weights/best.pt
+
+# Dataset config from Stage 1
+data_yaml: configs/pose_estimation.yaml
+
+# Device: "cpu", "cuda", "0", etc.
+device: "cpu"     # change to "0" or "cuda" if you have a GPU
+
+imgsz: 640
+batch: 8
+
+# Directory with validation images (from Stage 1 conversion)
+val_images_dir: data/yolo_format/images/val
+
+# ---------- Which experiments to run ----------
+experiments:
+  baseline_fp32: true          # original model, no pruning, FP32
+  pruned_fp32: true            # pruned model, FP32
+  pruned_fp16: true            # pruned model, FP16 (quantized inference)
+
+# ---------- Pruning config ----------
+pruning:
+  enabled: true                # if false, pruned_* experiments are skipped
+  global_amount: 0.3           # fraction of weights globally pruned (0.3 = 30%)
+  module_types: ["Conv2d", "Linear"]  # which modules to prune (by type name)
+
+# ---------- Quantization config ----------
+quantization:
+  enabled: true                # if false, pruned_fp16 is skipped
+  type: "fp16"                 # this script uses FP16 (half precision) for simplicity
+
+# ---------- Benchmark config ----------
+benchmark:
+  num_warmup: 5                # ignore timing of first few runs
+  num_iters: 30                # measured iterations for latency
+  num_images: 50               # number of val images to cycle over for timing
+  results_csv: runs/pose/optimization_results.csv
+

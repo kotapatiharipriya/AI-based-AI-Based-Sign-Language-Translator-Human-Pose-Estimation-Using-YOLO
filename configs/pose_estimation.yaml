@@ -1,0 +1,37 @@
+# configs/pose_estimation.yaml
+# Ultralytics YOLO pose dataset for TrainingDataPro Human Pose Estimation (mapped to COCO 17 keypoints)
+
+path: data/yolo_format   # root relative to project root
+train: images/train
+val: images/val
+test:
+
+# Keypoints
+kpt_shape: [17, 3]  # 17 keypoints, (x, y, visibility)
+flip_idx: [0, 2, 1, 4, 3, 6, 5, 8, 7, 10, 9, 12, 11, 14, 13, 16, 15]
+
+# Classes
+names:
+  0: person
+
+# Keypoint names (COCO order)
+kpt_names:
+  0:
+    - nose
+    - left_eye
+    - right_eye
+    - left_ear
+    - right_ear
+    - left_shoulder
+    - right_shoulder
+    - left_elbow
+    - right_elbow
+    - left_wrist
+    - right_wrist
+    - left_hip
+    - right_hip
+    - left_knee
+    - right_knee
+    - left_ankle
+    - right_ankle
+

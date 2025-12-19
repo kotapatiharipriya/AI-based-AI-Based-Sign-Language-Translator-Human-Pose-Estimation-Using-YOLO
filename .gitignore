@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Conda / venv
+.env
+venv/
+.conda/
+
+# OS
+.DS_Store
+
+# Large model files (optional)
+*.pt
+runs/
