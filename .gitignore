@@ -14,3 +14,7 @@ venv/
 # Large model files (optional)
 *.pt
 runs/
+data/
+*.zip
+runs/
+*.pt
