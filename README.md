@@ -1,5 +1,4 @@
-# Human Pose Estimation with Ultralytics YOLO (COMPE 510 Term Project)
-
+# Human Pose Estimation with Ultralytics YOLO 
 This project fine-tunes an Ultralytics YOLO pose model on the **TrainingDataPro Human Pose Estimation** dataset and adds:
 
 - A **Stage 1** model training pipeline + simple inference script  
